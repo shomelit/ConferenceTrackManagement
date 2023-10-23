@@ -2,28 +2,48 @@
 package com.conference.management.files;
 import com.conference.management.configuration.Configuration;
 import com.conference.management.talks.Talks;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * Clase Files: Encargada de leer el archivo txt
+ */
 public class Files {
+    /***
+     * String pathFile : ruta del archivo
+     */
     private static String pathFile;
 
+    /***
+     * Método constructor de la clase
+     */
     public Files(){
         pathFile = Configuration.FILE;
     }
 
+    /***
+     * Sobrecarga del método constructor
+     * @param pathFile ruta del archivo
+     */
     public Files(String pathFile){
         Files.pathFile = pathFile;
     }
 
+    /***
+     * Método get de pathFile
+     * @return String pathFile
+     */
     public static String getPathFile() {
         return pathFile;
     }
 
+    /***
+     * Método readFile: Encargado de leer el archivo
+     * @return listado de Talks
+     */
     public List<Talks> readFile(){
-        List<Talks> trackTalks = new ArrayList<Talks>();
+        List<Talks> trackTalks = new ArrayList<>();
         try{
             int id = 0, minutes;
             String nameFile = getPathFile();
@@ -84,10 +104,20 @@ public class Files {
         return trackTalks;
     }
 
+    /***
+     * Método checkFileExists: verifica si existe el archivo y es un directorio valido
+     * @param file
+     * @return boolean
+     */
     public static boolean checkFileExists(File file) {
         return file.exists() && !file.isDirectory();
     }
 
+    /***
+     * Método checkTxtFile: Verifica que la extensión del archivo sea un txt
+     * @param file ruta y nombre del archivo
+     * @return boolean
+     */
     public static boolean checkTxtFile(String file){
         return (file.substring((file.lastIndexOf(".") + 1)).equalsIgnoreCase("txt"));
     }

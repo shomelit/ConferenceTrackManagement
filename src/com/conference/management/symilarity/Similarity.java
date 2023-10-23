@@ -1,16 +1,28 @@
 package com.conference.management.symilarity;
 import com.conference.management.talks.Talks;
-import com.sun.xml.internal.ws.util.StringUtils;
-
 import java.util.Comparator;
 
+/**
+ * Clase Similarity implements Comparator
+ */
 public class Similarity implements Comparator<Talks> {
+    /***
+     * Método sobreescrito para comparar el listado de talks
+     * @param talks1 title de talks
+     * @param talks2 title de talks
+     * @return int indicativo de similitud para ordenamiento
+     */
     @Override
     public int compare(Talks talks1, Talks talks2){
-
         return (findSimilarity(talks1.getTitle(), talks2.getTitle())>=0.5) ? 1 : -1;
     }
 
+    /***
+     * Método que calcula de similitud entre dos cadenas de texto
+     * @param X String a comparar
+     * @param Y String a comparar
+     * @return
+     */
     public static int getLevenshteDistance(String X, String Y)
     {
         int m = X.length();
@@ -34,6 +46,12 @@ public class Similarity implements Comparator<Talks> {
         return T[m][n];
     }
 
+    /***
+     * Mètodo de búsqueda de similitudes entre dos cadenas
+     * @param x String
+     * @param y String
+     * @return double similitud
+     */
     public static double findSimilarity(String x, String y) {
         if (x == null || y == null) {
             throw new IllegalArgumentException("Strings no pueden ser nulos");

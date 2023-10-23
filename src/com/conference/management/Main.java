@@ -7,13 +7,24 @@ import com.conference.management.talks.Talks;
 import java.util.List;
 import java.util.Scanner;
 
+/***
+ * Clase Main
+ */
 public class Main {
 
+    /***
+     * Método main (principal)
+     * @param args
+     */
     public static void main(String[] args) {
         menu();
     }
 
-    public static String menu(){
+    /***
+     * Método menu:
+     * método recursivo que presentará las opciones del sistema
+     */
+    public static void  menu(){
         Scanner read = new Scanner (System.in);
         String option;
         do {
@@ -58,6 +69,5 @@ public class Main {
                 }
             }
         } while (!option.equals("0") && !option.equals("1") && !option.equals("2"));
-        return option;
     }
 }
